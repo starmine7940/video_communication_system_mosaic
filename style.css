@@ -48,7 +48,7 @@ video {
 	background: black;
 	width: 100%;
 	border-radius: 5px;
-	/* filter: blur(1px); */
+	filter: blur(1px);
 }
 
 /* コントローラ */
@@ -104,4 +104,18 @@ button:hover {
 	height: 150px;
 	overflow-y: scroll;
 	border: 1px solid white;
+}
+
+/* デバイスのコントローラ */
+
+#device-controllers-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.device-controller-container {
+	width: 50%;
+	padding: 5px 20px;
 }
