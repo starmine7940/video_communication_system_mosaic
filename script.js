@@ -261,7 +261,7 @@ function getDeviceList(deviceInfos){
 
     // モザイク条件
     function mosaic(video, emotion){
-        video.style.filter = 'blur(' + (2 - emotion / 2) + 'px)';
+        video.style.filter = 'blur(' + (3 - emotion * 3 / 4) + 'px)';
     }
 
     // デバイスのオンオフを保持する
