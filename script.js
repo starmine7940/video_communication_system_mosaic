@@ -9,13 +9,13 @@ const convertInfoToOption = (deviceInfo) => {
 }
 
 // DeviceInfoを取得する
-function getDeviceList(deviceInfos) {
-    const audioDeviceInfos = deviceInfos.filter((deviceInfo) => deviceInfo.kind === 'audioinput')
-    const videoDeviceInfos = deviceInfos.filter((deviceInfo) => deviceInfo.kind === 'videoinput')
-    return { audioDeviceInfos, videoDeviceInfos }
+function getDeviceList(deviceInfos){
+    const audioDeviceInfos = deviceInfos.filter((deviceInfo) => deviceInfo.kind === 'audioinput');
+    const videoDeviceInfos = deviceInfos.filter((deviceInfo) => deviceInfo.kind === 'videoinput');
+    return { audioDeviceInfos, videoDeviceInfos };
 }
 
-(async function main() {
+(async function main(){
     const myVideo = document.getElementById('my-video');
     const myId = document.getElementById('my-id');
     const videosContainer = document.getElementById('videos-container');
@@ -62,7 +62,7 @@ function getDeviceList(deviceInfos) {
         };
         const newStream = await navigator.mediaDevices.getUserMedia(constraints);
         myVideo.srcObject = newStream;
-        if (room !== undefined) {
+        if(room !== undefined){
             room.replaceStream(newStream);
         }
         localStream = newStream;
@@ -87,7 +87,7 @@ function getDeviceList(deviceInfos) {
     // Peerを作成する
     const peer = new Peer({
         key: SKYWAY_KEY,
-        debug: 0,
+        debug: 0
     });
     peer.on('open', (id) => {
         myId.textContent = id;
@@ -98,7 +98,7 @@ function getDeviceList(deviceInfos) {
     joinButton.addEventListener('click', () => {
         room = peer.joinRoom(roomId.value, {
             mode: 'mesh',
-            stream: localStream,
+            stream: localStream
         });
 
         // 入室する時
@@ -164,6 +164,7 @@ function getDeviceList(deviceInfos) {
 
     peer.on('error', console.error);
 
+    // 相手の要素を作る
     function createPersonalVideoContainer(stream){
         const remoteVideo = document.createElement('video');
         remoteVideo.srcObject = stream;
@@ -213,7 +214,7 @@ function getDeviceList(deviceInfos) {
     }
 
     // 左右キーが押されたら気持ちを変える
-    document.addEventListener('keydown', function (e) {
+    document.addEventListener('keydown', function(e){
         let changed_flag = false;
         if(e.code == 'ArrowLeft' && myEmotionBar.value > 0){
             myEmotionBar.value -= 1;
@@ -254,7 +255,7 @@ function getDeviceList(deviceInfos) {
                 // console.log(response);
             })
             .catch((error) => {
-                // console.log(error)
+                // console.log(error);
             });
     }
 
